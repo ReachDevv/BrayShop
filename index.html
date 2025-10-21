@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brays shop - academic assistance services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=League+Spartan:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Snow Canvas */
+#snowCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main Container */
+.main-container {
+    width: 100%;
+    max-width: 1400px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff, #ccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 5px;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: #999;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Content Grid */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #fff;
+    text-transform: lowercase;
+}
+
+/* Services Section */
+.services-section {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.service-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #555;
+    transform: translateX(5px);
+}
+
+.service-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.service-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+/* Order Section */
+.order-section {
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    padding: 18px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Contact Footer */
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.contact-info {
+    text-align: center;
+}
+
+.contact-text {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.phone-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4CAF50;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.phone-link:hover {
+    color: #66BB6A;
+    transform: scale(1.05);
+}
+
+.trust-info {
+    flex: 1;
+    max-width: 600px;
+}
+
+.trust-text {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.trust-text strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.payment-info {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+    z-index: 1000;
+    transition: top 0.5s ease;
+}
+
+.notification.show {
+    top: 30px;
+}
+
+/* Custom Select Styling */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-container {
+        max-width: 100%;
+    }
+    
+    .logo {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 15px;
+    }
+    
+    .services-section,
+    .order-section {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .phone-link {
+        font-size: 1.2rem;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hover Effects */
+.service-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.service-item:hover::before {
+    left: 100%;
+}
+
+</style>
+    <canvas id="snowCanvas"></canvas>
+    
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">brays shop</h1>
+            <p class="tagline">your academic success partner</p>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Services Section -->
+            <section class="services-section">
+                <h2 class="section-title">our services</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <span class="service-name">complete delta math</span>
+                        <span class="service-price">$4</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">missing assignments</span>
+                        <span class="service-price">$5</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">test assistance</span>
+                        <span class="service-price">$8</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">late work submission</span>
+                        <span class="service-price">$5</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">urgent assignments</span>
+                        <span class="service-price">$4</span>
+                    </div>
+                    <div class="service-item">
+                        <span class="service-name">paper assignments</span>
+                        <span class="service-price">$4</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Form Section -->
+            <section class="order-section">
+                <h2 class="section-title">get started</h2>
+                <form id="orderForm" class="order-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service">select service</label>
+                            <select id="service" name="service" required>
+                                <option value="">choose a service</option>
+                                <option value="complete delta math - $4">complete delta math - $4</option>
+                                <option value="missing assignments - $5">missing assignments - $5</option>
+                                <option value="test assistance - $8">test assistance - $8</option>
+                                <option value="late work submission - $5">late work submission - $5</option>
+                                <option value="urgent assignments - $4">urgent assignments - $4</option>
+                                <option value="paper assignments - $4">paper assignments - $4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fullName">full name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="grade">grade level</label>
+                            <input type="text" id="grade" name="grade" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="wakeId">wake id</label>
+                            <input type="text" id="wakeId" name="wakeId" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline">when is it due?</label>
+                        <input type="text" id="deadline" name="deadline" placeholder="e.g., asap, tomorrow, specific date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalInfo">additional details</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="any specific requirements or details..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">submit request</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Contact Info -->
+        <footer class="contact-footer">
+            <div class="contact-info">
+                <p class="contact-text">ready to get started? text us at</p>
+                <a href="tel:984-332-4900" class="phone-link">984-332-4900</a>
+            </div>
+            
+            <div class="trust-info">
+                <p class="trust-text">
+                    <strong>your privacy & satisfaction guaranteed</strong><br>
+                    i'm here to help you succeed academically. i'll only access and complete the specific assignments you request - nothing else. if you're not completely satisfied with the work, i'll revise it for free until it meets your expectations.
+                </p>
+                <p class="payment-info">payment via cash • local pickup available</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <p>order submitted successfully!</p>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+    
+    // Smooth Snow Effect
+const canvas = document.getElementById('snowCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Snowflake class
+class Snowflake {
+    constructor() {
+        this.reset();
+        this.y = Math.random() * canvas.height;
+    }
+
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = -10;
+        this.size = Math.random() * 3 + 1;
+        this.speed = Math.random() * 2 + 1;
+        this.wind = Math.random() * 0.5 - 0.25;
+        this.opacity = Math.random() * 0.8 + 0.2;
+    }
+
+    update() {
+        this.y += this.speed;
+        this.x += this.wind;
+
+        // Add slight floating effect
+        this.x += Math.sin(this.y * 0.01) * 0.5;
+
+        // Reset if snowflake goes off screen
+        if (this.y > canvas.height + 10) {
+            this.reset();
+        }
+
+        // Keep within horizontal bounds
+        if (this.x > canvas.width + 10) {
+            this.x = -10;
+        } else if (this.x < -10) {
+            this.x = canvas.width + 10;
+        }
+    }
+
+    draw() {
+        ctx.save();
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+// Create snowflakes
+const snowflakes = [];
+const snowflakeCount = 150;
+
+for (let i = 0; i < snowflakeCount; i++) {
+    snowflakes.push(new Snowflake());
+}
+
+// Animation loop
+function animateSnow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    snowflakes.forEach(snowflake => {
+        snowflake.update();
+        snowflake.draw();
+    });
+
+    requestAnimationFrame(animateSnow);
+}
+
+animateSnow();
+
+// Discord Webhook Integration
+const discordWebhookURL = 'https://discord.com/api/webhooks/1430280789756608723/7uPDZITOWdd8qtvjB4PKhBMlFwQcMGt8W1TMxKHI-DLGhOO6sMl_BaB2lnkqE5cNTB5q';
+
+// Form submission
+const orderForm = document.getElementById('orderForm');
+const notification = document.getElementById('notification');
+
+orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(orderForm);
+    const orderData = {
+        service: formData.get('service'),
+        fullName: formData.get('fullName'),
+        grade: formData.get('grade'),
+        wakeId: formData.get('wakeId'),
+        deadline: formData.get('deadline'),
+        additionalInfo: formData.get('additionalInfo'),
+        timestamp: new Date().toISOString()
+    };
+
+    // Create Discord embed
+    const discordPayload = {
+        embeds: [{
+            title: '📚 New Academic Request - brays shop',
+            color: 0x4CAF50,
+            fields: [
+                {
+                    name: '🎯 Service Requested',
+                    value: orderData.service || 'Not specified',
+                    inline: false
+                },
+                {
+                    name: '👤 Student Name',
+                    value: orderData.fullName || 'Not provided',
+                    inline: true
+                },
+                {
+                    name: '📈 Grade Level',
+                    value: orderData.grade || 'Not provided',
+                    inline: true
+                },
+                {
+                    name: '🆔 Wake ID',
+                    value: orderData.wakeId || 'Not provided',
+                    inline: true
+                },
+                {
+                    name: '⏰ Deadline',
+                    value: orderData.deadline || 'Not specified',
+                    inline: true
+                },
+                {
+                    name: '📝 Additional Details',
+                    value: orderData.additionalInfo || 'None provided',
+                    inline: false
+                }
+            ],
+            footer: {
+                text: `Request received at ${new Date().toLocaleString()} • Ready to assist!`,
+                icon_url: 'https://i.imgur.com/3Z3vM1t.png'
+            },
+            thumbnail: {
+                url: 'https://i.imgur.com/3Z3vM1t.png'
+            }
+        }]
+    };
+
+    try {
+        // Show loading state
+        const submitBtn = orderForm.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'submitting...';
+        submitBtn.disabled = true;
+
+        // Send to Discord webhook
+        const response = await fetch(discordWebhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(discordPayload)
+        });
+
+        if (response.ok) {
+            // Show success notification
+            showNotification('request submitted! we\'ll contact you soon.');
+            
+            // Reset form
+            orderForm.reset();
+            
+            // Reset button
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        } else {
+            throw new Error('Failed to submit request');
+        }
+    } catch (error) {
+        console.error('Error submitting request:', error);
+        showNotification('error submitting request. please text us directly.', 'error');
+        
+        // Reset button
+        const submitBtn = orderForm.querySelector('.submit-btn');
+        submitBtn.textContent = 'submit request';
+        submitBtn.disabled = false;
+    }
+});
+
+// Notification system
+function showNotification(message, type = 'success') {
+    notification.innerHTML = `<p>${message}</p>`;
+    
+    if (type === 'error') {
+        notification.style.background = 'linear-gradient(135deg, #f44336, #e53935)';
+    } else {
+        notification.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+    }
+    
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 5000);
+}
+
+// Add interactive hover effects to service items
+document.querySelectorAll('.service-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const serviceName = this.querySelector('.service-name').textContent;
+        const servicePrice = this.querySelector('.service-price').textContent;
+        const serviceSelect = document.getElementById('service');
+        
+        // Find and select the matching option
+        for (let option of serviceSelect.options) {
+            if (option.text.toLowerCase().includes(serviceName.toLowerCase())) {
+                serviceSelect.value = option.value;
+                break;
+            }
+        }
+        
+        // Highlight the form
+        document.querySelector('.order-section').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+        
+        // Add glow effect to form
+        const orderSection = document.querySelector('.order-section');
+        orderSection.style.boxShadow = '0 0 30px rgba(76, 175, 80, 0.3)';
+        setTimeout(() => {
+            orderSection.style.boxShadow = '';
+        }, 2000);
+    });
+});
+
+// Form validation
+function validateForm() {
+    const wakeId = document.getElementById('wakeId').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const service = document.getElementById('service').value;
+    
+    if (!service) {
+        showNotification('please select a service', 'error');
+        return false;
+    }
+    
+    if (fullName.length < 2) {
+        showNotification('please enter your full name', 'error');
+        return false;
+    }
+    
+    if (wakeId.length < 3) {
+        showNotification('please enter a valid wake id', 'error');
+        return false;
+    }
+    
+    return true;
+}
+
+// Add form validation before submission
+orderForm.addEventListener('submit', function(e) {
+    if (!validateForm()) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Smooth input animations
+document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(input => {
+    input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+    });
+    
+    input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+    });
+});
+
+// Phone number click tracking
+document.querySelector('.phone-link').addEventListener('click', function() {
+    console.log('Phone number clicked');
+});
+
+// Page load animations
+document.addEventListener('DOMContentLoaded', () => {
+    // Add fade-in animation to main elements
+    const elements = document.querySelectorAll('.header, .services-section, .order-section, .contact-footer');
+    
+    elements.forEach((element, index) => {
+        setTimeout(() => {
+            element.style.animation = 'fadeIn 0.8s ease-out forwards';
+        }, index * 200);
+    });
+});
+
+// Add keyboard navigation
+document.addEventListener('keydown', (e) => {
+    // Press 'Escape' to close notification
+    if (e.key === 'Escape') {
+        notification.classList.remove('show');
+    }
+    
+    // Press 'Ctrl+Enter' to submit form
+    if (e.ctrlKey && e.key === 'Enter') {
+        orderForm.dispatchEvent(new Event('submit'));
+    }
+});
+
+// Add ripple effect to buttons
+document.querySelector('.submit-btn').addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    this.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+});
+
+// Add ripple styles dynamically
+const style = document.createElement('style');
+style.textContent = `
+    .submit-btn {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+    }
+    
+    @keyframes ripple-animation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+</script>
+
+</body>
+</html>
